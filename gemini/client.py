@@ -1,7 +1,7 @@
 import google.genai as genai
 
 class GeminiClient:
-    def __init__(self, api_key: str, model: str = "gemini-1.5-flash"):
+    def __init__(self, api_key: str, model: str = "models/gemini-1.5-pro"):
         self.client = genai.Client(api_key=api_key)
         self.model = model
 
