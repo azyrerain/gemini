@@ -42,20 +42,22 @@ class SortingHatClient:
         Previous answers: {previous_answers}
         Ask ONE new thoughtful question that probes deeper into their personality,
         building on what they have already said.
+        Use simple words and phrasing that a 12-year-old can easily understand.
         """
         return self.gemini.get_response(prompt).strip()
+
 
     def next_recency_question(self, child_name: str, previous_answers: list[str]) -> str:
         prompt = f"""
         You are the Hogwarts Sorting Hat. Speak in its voice.
         The child is named {child_name}.
         Previous answers so far: {previous_answers}
-        Ask ONE probing but supportive question with RECENCY bias —
+        Ask ONE supportive question with RECENCY bias —
         meaning it should focus on something happening today or this week.
-        It could be about feelings, experiences, relationships, schoolwork,
-        or anything recent that reveals their current state of mind.
+        Use simple, clear language that a 12-year-old can understand.
         """
         return self.gemini.get_response(prompt).strip()
+
 
     def run_interview(self, child_name: str) -> tuple[list[str], list[str]]:
         timeless_answers = []
