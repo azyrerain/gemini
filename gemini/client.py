@@ -1,9 +1,14 @@
 import google.genai as genai
 
 class GeminiClient:
-    def __init__(self, api_key: str, model: str = "models/gemini-1.5-pro"):
-        self.client = genai.Client(api_key=api_key)
+    def __init__(self, api_key: str, model: str = None):
+    self.client = genai.Client(api_key=api_key)
+    if model:
         self.model = model
+    else:
+        # pick the first "pro" model available
+        models = [m.name for m in self.client.models.list() if "pro" in m.name]
+        self.model = models[0] if models else None
 
     def get_response(self, prompt: str) -> str:
         response = self.client.models.generate_content(
