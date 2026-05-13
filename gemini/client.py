@@ -8,6 +8,6 @@ class GeminiClient:
     def get_response(self, prompt: str) -> str:
         response = self.client.models.generate_content(
             model=self.model,
-            contents=[{"role": "user", "parts": [prompt]}]
+            contents=prompt
         )
         return response.text
