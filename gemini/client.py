@@ -11,3 +11,7 @@ class GeminiClient:
             contents=prompt
         )
         return response.text
+        
+    def list_models(self):
+        # Returns all model names available to your account
+        return [m.name for m in self.client.models.list()]
