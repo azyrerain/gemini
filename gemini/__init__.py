@@ -1,1 +1,1 @@
-from .client import GeminiClient
+from .client import GeminiClient, SortingHatClient
